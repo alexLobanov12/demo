@@ -39,13 +39,14 @@ class ArticleStoreRequest extends FormRequest
             'title.required' => 'Введите заголовок',
             'title.max'      => 'Максимальная длина заголовка должна составлять 350 символов',
             'content'        => 'Введите контент статьи',
-            'themes_id.required' => 'У статьи должна быть хотя бы одна тема'
+            'themes_id.required' => 'У статьи должна быть хотя бы одна тема',
         ];
     }
 
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response()->json([
-            'message' => $validator->errors(),
+            'status' => false,
+            'error_messages' => $validator->errors(),
         ], 400));
     }
 }

@@ -46,13 +46,14 @@ class UserRegisterRequest extends FormRequest
             'password.required'   => 'Пароль обязатьное поле',
             'password.min'        => 'Минимальная длина пароля должна составлять 6 символов',
             'password.max'        => 'Максимальная длина пароля должна составлять 14 символов',
-            'role_id'             => 'Роль обязательное поле'
+            'role_id.required'    => 'Роль обязательное поле',
         ];
     }
     
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response()->json([
-            'message' => $validator->errors(),
+            'status' => false,
+            'error_messages' => $validator->errors(),
         ], 400));
     }
 }

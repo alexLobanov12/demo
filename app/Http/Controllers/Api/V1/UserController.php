@@ -90,7 +90,7 @@ class UserController extends Controller
                     'token'  => $token,
                 ], 200);
             } else {
-                // Если пользователь найден но пароль не совпадает
+                // Если пользователь найден, но пароль не совпадает
                 return response([
                     'status'  => false,
                     'message' => 'Неверный пароль'

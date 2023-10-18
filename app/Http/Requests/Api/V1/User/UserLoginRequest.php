@@ -44,7 +44,8 @@ class UserLoginRequest extends FormRequest
 
     protected function failedValidation(Validator $validator) {
         throw new HttpResponseException(response()->json([
-            'message' => $validator->errors(),
+            'status' => false,
+            'error_messages' => $validator->errors(),
         ], 400));
     }
 }
